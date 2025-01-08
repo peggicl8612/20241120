@@ -1,9 +1,9 @@
 import 'dotenv/config'
 import linebot from 'linebot'
-import commandUSD from './commands/usd.js'
+import commandJPY from './commands/usdjpy.js'
 import commandFE from './commands/fe.js'
 import commandQR from './commands/qr.js'
-import commandTWGod from './commands/twgod.js'
+import commandTWGod from './commands/travel.js'
 
 const bot = linebot({
   channelId: process.env.CHANNEL_ID,
@@ -13,8 +13,8 @@ const bot = linebot({
 
 bot.on('message', event => {
   if (event.message.type === 'text') {
-    if (event.message.text === 'usd') {
-      commandUSD(event)
+    if (event.message.text === 'jpy') {
+      commandJPY(event)
     } else if (event.message.text === 'fe') {
       commandFE(event)
     } else if (event.message.text === 'qr') {
