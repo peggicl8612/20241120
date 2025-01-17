@@ -1,67 +1,100 @@
 export default () => {
   return {
     type: 'bubble',
+    hero: {
+      type: 'image',
+      url: 'https://content2.kawasaki.com/ContentStorage/CKM/Products/5485/d289302f-0f0b-4c94-b56b-986f4d6e23b6.png?w=767',
+      size: 'full',
+      aspectRatio: '20:13',
+      aspectMode: 'cover',
+      action: {
+        type: 'uri',
+        uri: 'https://line.me/'
+      }
+    },
     body: {
       type: 'box',
       layout: 'vertical',
       contents: [
         {
-          type: 'image',
-          url: 'https://wdaweb.github.io/index_assets/img/node.jpg',
-          size: 'full',
-          aspectMode: 'cover',
-          aspectRatio: '1:1',
-          gravity: 'center'
+          type: 'text',
+          text: 'KAWASAKI',
+          weight: 'bold',
+          size: 'xl'
         },
         {
           type: 'box',
           layout: 'vertical',
-          contents: [],
-          position: 'absolute',
-          background: {
-            type: 'linearGradient',
-            angle: '0deg',
-            endColor: '#00000000',
-            startColor: '#00000099'
-          },
-          width: '100%',
-          height: '40%',
-          offsetBottom: '0px',
-          offsetStart: '0px',
-          offsetEnd: '0px'
-        },
-        {
-          type: 'box',
-          layout: 'horizontal',
+          margin: 'lg',
+          spacing: 'sm',
           contents: [
             {
               type: 'box',
-              layout: 'vertical',
+              layout: 'baseline',
+              spacing: 'sm',
               contents: [
                 {
-                  type: 'box',
-                  layout: 'horizontal',
-                  contents: [
-                    {
-                      type: 'text',
-                      text: 'Node.js',
-                      size: 'xl',
-                      color: '#ffffff'
-                    }
-                  ]
+                  type: 'text',
+                  text: 'Moto',
+                  color: '#aaaaaa',
+                  size: 'sm',
+                  flex: 1
+                },
+                {
+                  type: 'text',
+                  text: 'Kawasaki Motors Taiwan',
+                  wrap: true,
+                  color: '#666666',
+                  size: 'sm',
+                  flex: 5,
+                  style: 'italic'
                 }
-              ],
-              spacing: 'xs'
+              ]
+            },
+            {
+              type: 'box',
+              layout: 'baseline',
+              spacing: 'sm',
+              contents: [
+                {
+                  type: 'text',
+                  text: '總經銷',
+                  color: '#aaaaaa',
+                  size: 'sm',
+                  flex: 1,
+                  weight: 'bold'
+                },
+                {
+                  type: 'text',
+                  text: '台崎重車股份有限公司',
+                  wrap: true,
+                  color: '#999999',
+                  size: 'sm',
+                  flex: 5
+                }
+              ]
             }
-          ],
-          position: 'absolute',
-          offsetBottom: '0px',
-          offsetStart: '0px',
-          offsetEnd: '0px',
-          paddingAll: '20px'
+          ]
+        }
+      ]
+    },
+    footer: {
+      type: 'box',
+      layout: 'vertical',
+      spacing: 'sm',
+      contents: [
+        {
+          type: 'button',
+          style: 'link',
+          height: 'sm',
+          action: {
+            type: 'uri',
+            label: 'WEBSITE',
+            uri: 'https://www.kawasaki-motors.com/ja-jp'
+          }
         }
       ],
-      paddingAll: '0px'
+      flex: 0
     }
   }
 }

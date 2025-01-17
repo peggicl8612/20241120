@@ -5,30 +5,36 @@ import fs from 'node:fs'
 
 export default async (event) => {
   try {
-    const { data } = await axios.get('https://wdaweb.github.io/')
+    const { data } = await axios.get('https://www.kawasaki-motors.com/ja-jp')
     const $ = cheerio.load(data)
     // console.log($('#fe .card-title').text())
     const courses = []
-    $('#fe .card').each(function () {
-      const t = template()
-      const url = new URL($(this).find('img').attr('src'), 'https://wdaweb.github.io').href
-      const name = $(this).find('.card-title').text().trim()
-
-      t.body.contents[0].url = url
-      t.body.contents[2].contents[0].contents[0].contents[0].text = ''
-
-      courses.push(t)
+    let i = 1
+    $('.vehicleContainer').each(function () {
+      if (i <= 9) {
+        const t = template()
+        const url = new URL($(this).find('img').attr('data-src'), 'https://www.kawasaki-motors.com/ja-jp').href
+        const moto = $(this).find('.headThree').text().trim()
+        // console.log(moto)
+        t.hero.url = url
+        // console.log(t.hero.url)
+        t.body.contents[0].text = moto
+        courses.push(t)
+        i += 1
+      }
     })
+
+    // console.log(courses)
 
     const result = await event.reply({
       type: 'flex',
-      altText: '課程查詢結果',
+      altText: '車款查詢結果',
       contents: {
         type: 'carousel',
         contents: courses
       }
     })
-    console.log(result)
+    // console.log(result)
 
     if (process.env.DEBUG === 'true' && result.message) {
       fs.writeFileSync('./dump/fe.json', JSON.stringify(courses, null, 2))

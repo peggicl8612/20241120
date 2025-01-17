@@ -2,7 +2,7 @@
 export default async event => {
   event.reply({
     type: 'text',
-    text: '你要查哪個縣市的ubike',
+    text: '你要搜尋哪種車款',
     // 快速回覆選項的設定(用陣列)，按鈕的行為可以是
     // 1.傳送訊息 (message) 2.跳轉連結 (uri) 3. Postback 資料 (postback)
     quickReply: {
@@ -12,17 +12,28 @@ export default async event => {
           action: {
             type: 'message',
             // 按下去後使用者會傳送出的文字
-            text: 'ubike:taipei',
+            text: 'NINJA ZX 車系',
+            uri: 'http://www.tw-kawasaki.com/moto_list.php#NINJA',
             // 按鈕顯示文字
-            label: '台北市'
+            label: 'NINJA ZX 車系'
           }
         },
         {
           type: 'action',
           action: {
             type: 'uri',
-            uri: 'https://x.com',
-            label: '網站'
+            text: 'NINJA 車系',
+            uri: 'http://www.tw-kawasaki.com/moto_list.php#NINJA',
+            label: 'NINJA 車系'
+          }
+        },
+        {
+          type: 'action',
+          action: {
+            type: 'uri',
+            text: 'Z 車系',
+            uri: 'http://www.tw-kawasaki.com/moto_list.php#NINJA',
+            label: 'Z 車系'
           }
         },
         {
@@ -30,7 +41,7 @@ export default async event => {
           action: {
             type: 'postback',
             label: 'postback',
-            data: 'aaa'
+            data: 'end'
           }
         }
       ]
